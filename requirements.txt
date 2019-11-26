@@ -1,0 +1,4 @@
+Flask
+flask-restful
+gunicorn
+Jinja2
