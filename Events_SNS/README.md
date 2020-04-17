@@ -2,6 +2,8 @@
 ```text
 Change the region and put the region specific AMI id, otherwise you will get error
 
+Go to folder ./ec2_instance 
+
 terraform init
 terraform plan -o tfplan
 terraform apply tfplan
