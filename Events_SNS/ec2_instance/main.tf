@@ -4,6 +4,9 @@ provider "aws" {
 module "my_sns_module" {
   source = "../sns_alert"
 }
+module "my_events" {
+  source = "../events"
+}
 
 resource "aws_instance" "test_instance" {
   ami           = "ami-09a4a9ce71ff3f20b"
