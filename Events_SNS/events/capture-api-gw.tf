@@ -19,6 +19,10 @@ resource "aws_cloudwatch_event_target" "api_gw" {
 
 resource "aws_sns_topic" "aws_api_gw_topic" {
   name = "aws-api-gateway"
+
+  provisioner "local-exec" {
+    command = "aws sns subscribe --topic-arn ${self.arn} --protocol email --notification-endpoint ${var.alarms_email}"
+  }
 }
 
 resource "aws_sns_topic_policy" "api_gw_pol" {

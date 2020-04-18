@@ -19,6 +19,9 @@ resource "aws_cloudwatch_event_target" "aws_logins" {
 
 resource "aws_sns_topic" "aws_logins_topic" {
   name = "aws-console-logins"
+    provisioner "local-exec" {
+    command = "aws sns subscribe --topic-arn ${self.arn} --protocol email --notification-endpoint ${var.alarms_email}"
+  }
 }
 
 resource "aws_sns_topic_policy" "default" {

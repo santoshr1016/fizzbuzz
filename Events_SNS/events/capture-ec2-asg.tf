@@ -24,6 +24,9 @@ resource "aws_cloudwatch_event_target" "asg_ec2" {
 
 resource "aws_sns_topic" "aws_ec2_topic" {
   name = "aws-ec2-events"
+    provisioner "local-exec" {
+    command = "aws sns subscribe --topic-arn ${self.arn} --protocol email --notification-endpoint ${var.alarms_email}"
+  }
 }
 
 resource "aws_sns_topic_policy" "asg_ec2_default" {
